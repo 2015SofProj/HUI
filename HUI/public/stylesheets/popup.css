@@ -1,0 +1,132 @@
+#transparented {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    
+    background-color: #000000;
+    
+    opacity: 0.7;
+    -moz-opacity: 0.7;
+    -khtml-opacity: 0.7;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    filter: alpha(opacity=70);
+    
+    z-index: 100;
+}
+
+/* 팝업창 */
+#popup {
+    position: absolute;
+    display: block;
+    
+    width: 400px;
+    height: 350px;
+    
+    left: calc((100% - 440px) / 2);
+    top: calc((100% - 350px) / 2);
+    
+    background-color: #FFFFFF;
+    border: 2px solid #582099;
+    
+    z-index: 120;
+}
+
+/* 팝업창에 있는 텍스트 필드 */
+.popup_text {
+    width: 80%;
+    background-color: #EBEBEB;
+    
+    display: block;
+    margin: 15px auto;
+    
+    border: 0px;
+    padding: 5px;
+    
+    font-size: 12pt;
+}
+
+/* 팝업창의 버튼 */
+.btn_popup_negative, .btn_popup_positive {
+    position: absolute;
+    
+    bottom: 0px;
+    
+    width: 50%;
+    
+    padding: 10px 0px;
+    margin: 0px;
+    
+    text-align: center;
+    
+    cursor: pointer;
+}
+
+/* 팝업창의 부정적 버튼 */
+.btn_popup_negative {
+    left: 0px;
+    
+    background-color: #EBEBEB;
+}
+
+/* 팝업창의 긍정적 버튼 */
+.btn_popup_positive {
+    right: 0px;
+    
+    background-color: #582099;
+    color: #FFFFFF;
+}
+
+#popup > h2 {
+    text-align: center;
+}
+
+#popup > p {
+    width: 80%;
+    
+    display: block;
+    margin: 30px auto;
+}
+
+/* 친구 추가하기 */
+.popup_list {
+    margin: 0px 15px;
+    padding: 15px;
+    height: 140px;
+
+    overflow: scroll;
+    border: 1px solid #EBEBEB;
+}
+
+.popup_list_tuple {
+    padding-bottom: 6px;
+    display: table;
+
+    width: 100%;
+
+    cursor: pointer;
+}
+
+.popup_list_tuple:hover {
+    background-color: #EBEBEB;
+}
+
+.popup_list_tuple > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.popup_list_tuple > div:nth-child(1) {
+    width: 30px;
+}
+
+.popup_list_pic {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0px 6px;
+    background-image: url(../images/roomicon.png);
+    background-size: cover;
+    border-radius: 15px;
+}

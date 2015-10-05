@@ -1,0 +1,36 @@
+.chat_list_tuple {
+    padding-bottom: 6px;
+    display: table;
+
+    width: 100%;
+
+    cursor: pointer;;
+}
+
+.chat_list_tuple:hover {
+	background-color: #EBEBEB;
+}
+
+.chat_list_tuple > div > img {
+    margin: 0px 6px;
+}
+
+.chat_list_tuple > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.chat_list_tuple > div:nth-child(1) {
+	width: 50px;
+}
+
+.span_room_title {
+    font-size: 18px;
+}
+
+.span_room_info {
+    display: inline-block;
+    
+    font-size: 12px;
+    color: #828282;
+}

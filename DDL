@@ -1,0 +1,119 @@
+-- --------------------------------------------------------
+-- 호스트:                          172.17.2.215
+-- 서버 버전:                        10.0.19-MariaDB - mariadb.org binary distribution
+-- 서버 OS:                        Win32
+-- HeidiSQL 버전:                  9.3.0.4989
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- hui 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `hui` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `hui`;
+
+
+-- 테이블 hui.chatcontentlist 구조 내보내기
+CREATE TABLE IF NOT EXISTS `chatcontentlist` (
+  `r_index` int(11) NOT NULL,
+  `roomID` int(11) NOT NULL,
+  `chatTime` varchar(50) NOT NULL,
+  `chatMsgList` varchar(20000) NOT NULL DEFAULT '{ }',
+  KEY `r_index` (`r_index`),
+  KEY `roomID` (`roomID`),
+  CONSTRAINT `ChatContentList_ibfk_1` FOREIGN KEY (`r_index`) REFERENCES `roomlist` (`r_index`),
+  CONSTRAINT `ChatContentList_ibfk_2` FOREIGN KEY (`roomID`) REFERENCES `roomlist` (`roomID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.chatcontentlist:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `chatcontentlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chatcontentlist` ENABLE KEYS */;
+
+
+-- 테이블 hui.chatlist 구조 내보내기
+CREATE TABLE IF NOT EXISTS `chatlist` (
+  `m_index` int(11) NOT NULL,
+  `roomID` varchar(500) NOT NULL,
+  `chatList` varchar(20000) NOT NULL DEFAULT '{ }',
+  PRIMARY KEY (`m_index`),
+  UNIQUE KEY `roomID` (`roomID`),
+  CONSTRAINT `ChatList_ibfk_1` FOREIGN KEY (`m_index`) REFERENCES `memberinfo` (`m_index`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.chatlist:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `chatlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `chatlist` ENABLE KEYS */;
+
+
+-- 테이블 hui.friendlist 구조 내보내기
+CREATE TABLE IF NOT EXISTS `friendlist` (
+  `m_index` int(11) NOT NULL,
+  `memID` varchar(255) NOT NULL,
+  `fList` varchar(20000) NOT NULL DEFAULT '{ }',
+  PRIMARY KEY (`m_index`),
+  UNIQUE KEY `memID` (`memID`),
+  CONSTRAINT `FriendList_ibfk_1` FOREIGN KEY (`m_index`) REFERENCES `memberinfo` (`m_index`),
+  CONSTRAINT `FriendList_ibfk_2` FOREIGN KEY (`memID`) REFERENCES `memberinfo` (`memID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.friendlist:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `friendlist` DISABLE KEYS */;
+INSERT INTO `friendlist` (`m_index`, `memID`, `fList`) VALUES
+	(24, 'jeta', '{ }'),
+	(26, 'test', '{ }');
+/*!40000 ALTER TABLE `friendlist` ENABLE KEYS */;
+
+
+-- 테이블 hui.memberinfo 구조 내보내기
+CREATE TABLE IF NOT EXISTS `memberinfo` (
+  `m_index` int(11) NOT NULL AUTO_INCREMENT,
+  `memID` varchar(255) NOT NULL,
+  `memPW` varchar(500) NOT NULL,
+  `nickname` varchar(20) NOT NULL,
+  `photo` varchar(20000) DEFAULT NULL,
+  `personalSetting` varchar(300) NOT NULL DEFAULT '{ }',
+  `r_indexList` varchar(500) DEFAULT '"{num: 0}"',
+  PRIMARY KEY (`m_index`),
+  UNIQUE KEY `memID` (`memID`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.memberinfo:~1 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `memberinfo` DISABLE KEYS */;
+INSERT INTO `memberinfo` (`m_index`, `memID`, `memPW`, `nickname`, `photo`, `personalSetting`, `r_indexList`) VALUES
+	(24, 'jeta', '160efd3faadf4ec245d6313806e03deb335d2fde71ae93b2d89e54e9f1ac9025', 'jETA', 'null', '{"Alert":{"DesktopAlert":true,"MessagePreview":false,"AlertWithSound":true},"General":{"SendType":0}}', '"{num: 0}"'),
+	(26, 'test', '293899b2e2eb8889e42fa0d13050f7b6df45d24f32d7acf36b9506a1517771ad', 'test', 'null', '"null"', '"{num: 0}"');
+/*!40000 ALTER TABLE `memberinfo` ENABLE KEYS */;
+
+
+-- 테이블 hui.roomlist 구조 내보내기
+CREATE TABLE IF NOT EXISTS `roomlist` (
+  `r_index` int(11) NOT NULL AUTO_INCREMENT,
+  `roomID` int(11) NOT NULL,
+  `joinedMem` varchar(2000) NOT NULL DEFAULT '{ }',
+  `roomName` varchar(100) NOT NULL,
+  PRIMARY KEY (`r_index`),
+  UNIQUE KEY `roomID` (`roomID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.roomlist:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `roomlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `roomlist` ENABLE KEYS */;
+
+
+-- 테이블 hui.userparticipatelist 구조 내보내기
+CREATE TABLE IF NOT EXISTS `userparticipatelist` (
+  `m_index` int(11) NOT NULL,
+  `userID` varchar(50) NOT NULL,
+  `participateList` varchar(20000) NOT NULL DEFAULT '{ }',
+  PRIMARY KEY (`m_index`),
+  CONSTRAINT `UserParticipateList_ibfk_1` FOREIGN KEY (`m_index`) REFERENCES `memberinfo` (`m_index`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 테이블 데이터 hui.userparticipatelist:~0 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `userparticipatelist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userparticipatelist` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

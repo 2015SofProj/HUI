@@ -1,0 +1,242 @@
+/* 전체 문서에 적용 */
+
+html {
+    height: 100%;
+    
+    overflow: hidden;
+}
+
+body {
+    min-height: 100%;
+    
+    height: 100%;
+    max-width: 960px;
+    min-width: 640px;
+    
+    margin: auto;
+    
+    background-color: #F5F5F5;
+    
+    overflow: hidden;
+    
+    font-family: '나눔 바른 고딕', 'Nanum Barun Gothic', '나눔바른고딕', 'NanumBarunGothic', '맑은 고딕', 'Malgun Gothic', '맑은고딕', 'MalgunGothic';
+}
+
+
+/* Header */
+
+header {
+    height: 50px;
+    background-color: #582099;
+    color: #FFFFFF;
+    
+    display: table;
+    width: 100%;
+}
+
+header > div {
+    display: table-cell;
+    
+    vertical-align: middle;
+    
+    width: 100%;
+    height: 100%;
+}
+
+#header_logo {
+    display: inline-block;
+    width: 300px;
+    padding-left: 10px;
+}
+
+#header_room_name {
+    font-size: 23px;
+}
+
+#header_room_people {
+    font-size: 12px;
+    color: #C4C4C4;
+}
+
+#header_btn_more {
+    float: right;
+    height: 26px;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+
+#room_menu {
+    position: absolute;
+    display: none;
+    background-color: white;
+    color: black;
+
+    z-index: 10;
+
+    box-shadow: 10px 10px 20px 0px #909090;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0px;
+}
+
+#room_menu > li {
+    padding: 20px;
+}
+
+#room_menu > li:hover {
+    background-color: #F5F5F5;
+}
+
+
+/* 좌측 메뉴 */
+
+nav {
+    float: left;
+    
+    width: 310px;
+    height: calc(100% - 50px - 65px);
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    
+    margin-right: 3px;
+}
+
+#nav_content > div {
+    padding-top: 6px;
+    margin-bottom: 3px;
+    
+    background-color: #FFFFFF;
+}
+
+#nav_menu {
+    position: absolute;
+    bottom: 0px;
+    
+    width: 310px;
+    height: 62px;
+    
+    background-color: #FFFFFF;
+    
+    font-size: 1px;
+}
+
+#nav_menu > img {
+    cursor: pointer;
+}
+
+#nav_menu > img:hover {
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+.btn_new {
+    text-align: center;
+    padding: 5px;
+    background-color: #F5F5F5;
+    color: #838383;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.btn_new > img {
+    height: 14px;
+}
+
+
+/* 우측 내용 */
+
+main {
+    float: right;
+    
+    width: calc(100% - 313px);
+    min-width: 330px;
+    
+    height: calc(100% - 50px - 65px);
+    background-color: #FFFFFF;
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#floating_icon {
+    position: absolute;
+    background-image: url(../images/roomicon.png);
+    width: 50px;
+    height: 50px;
+    
+    top: 25px;
+    right: 50px;
+    
+    z-index: 10;
+}
+
+#chat {
+    position: absolute;
+    bottom: 65px;
+    
+    width: calc(100% - 313px);
+    max-width: 647px;
+    min-width: 330px;
+    max-height: calc(100% - 50px - 65px);
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#chat > div {
+    padding-left: 50px;
+    
+    font-size: 14px;
+}
+
+.chat_msg {
+    background-image: url(../images/roomicon.png);
+    background-position: top left;
+    background-size: 40px;
+    background-repeat: no-repeat;
+    
+    min-height: 50px;
+    
+    margin: 20px 60px 10px 60px;
+}
+
+.chat_msg_noimg {
+    margin: 10px 60px;
+}
+
+.chat_name {
+    display: block;
+    margin-bottom: 10px;
+    
+    font-weight: bold;
+}
+
+.chat_time {
+    float: right;
+    
+    font-size: 8px;
+    
+    color: #828282;
+}
+
+#typebox {
+    position: absolute;
+    bottom: 0px;
+    
+    max-width: 647px;
+    width: calc(100% - 313px);
+    height: 62px;
+    
+    background-color: #FF00FF;
+}
+
+#typebox textarea {
+    border: 0px;
+    resize: none;
+    margin: 0px;
+    padding: 5px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+}
