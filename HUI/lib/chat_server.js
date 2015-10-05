@@ -1,4 +1,4 @@
-﻿var socketio = require('socket.io');
+var socketio = require('socket.io');
 var mysql = require('mysql'); //MySQL API 불러오기
 var io;
 var guestNumber = 1;
@@ -17,9 +17,9 @@ var Async = require('async');
 
 //MySQL 접속
 var db = mysql.createConnection({
-    host     : '172.17.2.215',
+    host     : 'localhost',
     user     : 'root',
-    password : 'damonet1004',
+    password : 'adjnj',
 });
 
 db.query('USE HUI');
@@ -972,7 +972,7 @@ function addNewFriend2(socket) {
                     } else {
                         // 기존의 fList를 다음 함수에 넘겨준다.
                         console.log("select fList From FriendList : " + queryResult[0].fList);
-                        var dd = JSON.parse(queryResult[0].fList);
+                        var dd = queryResult[0].fList;
                         f_number = dd.number;
                         console.log("test0 : " + dd + "test1 : " + dd.number + " / test2 : " + dd.list);
                         //return queryResult;
@@ -984,7 +984,7 @@ function addNewFriend2(socket) {
             function (oldFriendList, callback) {
                 // setting friend list to json
                 console.log("old friend list : " + oldFriendList);
-                var existFriendList = JSON.parse(oldFriendList);
+                var existFriendList = oldFriendList;
 
                 console.log("friend name for add : " + fName + " / existFriendList : " + existFriendList);
                 console.log("friendlist list : " + existFriendList.number);
@@ -1082,8 +1082,7 @@ function getFriends(socket){
 	          if(err){
 	              throw err;
 	          }else{
-	            var number = JSON.parse(row[0].fList).number;
-	            console.log(JSON.parse(row[0].fList).number);
+	            var number = row[0].fList.number;
 	            if(number >0){
 	                return makeList(socket,row);
 	            }else{
